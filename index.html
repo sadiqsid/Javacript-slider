@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+.slider-container{
+    margin: 0 auto;
+    padding: 0;
+    width: 500px;
+    display: block;
+}
+
+.thumb{
+    margin: 0 auto;
+    padding: 0;
+    display: block;
+    width: 500px;
+}
+
+.thumb li{
+    margin: 0;
+    padding: 0;
+    width: 100px;
+    display:inline-block;
+}
+
+/* Fading animation */
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+      </style>  
+</head>
+<body>
+    <div class="slider-container">
+       <div class="mySlides fade"> <img src="https://digitalimages.osn.com/EDMs_2024/May/Despicable_ME_3_13_May_2024.jpg" width="100%"> </div>
+       <div class="mySlides fade"> <img src="https://digitalimages.osn.com/EDMs_2024/May/The_Pod_Generation_29_Apr_2024.jpg" width="100%"> </div>
+       <div class="mySlides fade"> <img src="https://digitalimages.osn.com/EDMs_2024/May/The_Beekeeper_3_May_2024.jpg" width="100%"> </div>
+    </div>
+
+    <ul class="thumb">
+       <li class="slideThumb" onClick="currentSlide(1)"> <img src="https://digitalimages.osn.com/EDMs_2024/May/Despicable_ME_3_13_May_2024.jpg" width="100%"> </li>
+       <li class="slideThumb" onClick="currentSlide(2)"> <img src="https://digitalimages.osn.com/EDMs_2024/May/The_Pod_Generation_29_Apr_2024.jpg" width="100%"> </li>
+       <li class="slideThumb" onClick="currentSlide(3)"><img src="https://digitalimages.osn.com/EDMs_2024/May/The_Beekeeper_3_May_2024.jpg" width="100%"> </li>
+    </ul>   
+
+<script>
+
+// set the index of the picture in the slideshow to 1
+let slideIndex = 1;
+
+// Calls the main function 'showSlides', and passes in the 1 
+// from above
+showSlide(slideIndex)
+
+//calling of functions to let the slide move to the next picture
+// This function probably gets called when user clicks the next
+// button. It adds n to the index, and calls the main function 'showSlides' again.
+function currentSlide(n){
+ showSlide(slideIndex = n)
+}
+
+// Main function, takes a number argument for the slide number
+// to show, and assigns this number to the variable 'n'
+function showSlide(n){
+
+    //  This variable is for iterating (adding)
+    let i;
+
+    // This variable selects the mySlides element from the DOM HTML
+    let slides = document.getElementsByClassName('mySlides')
+
+    // This variable selects the dot element from the DOM HTML
+    let slideThumb = document.getElementsByClassName('slideThumb')
+
+// If the number passed into the main function is greater_than 
+// the number of slides, then set the variable slideIndex to 1.
+   if(n > slides.length){
+    slideIndex = 1
+   }
+
+ // If the number passed into the main function is less_than 
+// the number of slides, then set the variable slideIndex to the number of slides.  
+if(n < 1) {
+    slideIndex = slides.length
+}
+
+// Iterate through all of the slides, and do what's in the {} 
+// to each slide. Set the display style to none to hide them.
+for (i = 0; i < slides.length; i++){
+    slides[i].style.display = "none";
+}
+
+// Iterate through all of the dots, and do what's in the {} 
+// to each dot element. Remove the class name 'active' for CSS.
+for (i = 0; i > slideThumb.length; i++){
+    slideThumb[i].className.replace('active', '')
+}
+
+// Set the display style of the slide before (-1) to 'block'
+// This makes it visible
+slides[slideIndex-1].style.display = 'block';
+
+// Set the class name of the dot before (-1) to 'active'
+// This is probably styled in the CSS
+slideThumb[slideIndex-1] += 'active';
+
+}
+
+console.log(showSlide())
+
+ </script>   
+
+</body>
+</html>
